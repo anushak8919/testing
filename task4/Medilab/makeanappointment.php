@@ -20,6 +20,10 @@
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
+
+
+    
+
   <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex justify-content-between">
       <div class="contact-info d-flex align-items-center">
@@ -50,8 +54,35 @@
       <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
     </div>
   </header>
+
+    <?php
+        $ipadd="localhost";
+        $username="root";
+        $password="";
+        $dbname="student1";
+        $conn=mysqli_connect($ipadd,$username,$password,$dbname);
+        $selectData="select * from appointment";
+        $fetchData=mysqli_query($conn,$selectData);
+        // if condition
+        if(isset($_POST['submit'])){
+             $paname=$_POST['pname'];
+             $paemail=$_POST['pemail'];
+             $paphone=$_POST['pphone'];
+             $padate=$_POST['pdate'];
+             $padepartment=$_POST['adepartment'];
+             $padocter=$_POST['adocter'];
+             $pmessage=$_POST['amessage'];
+            
+            
+            $insertdataQuery="$INSERT INTO `appointment`( `name`, `email`, `phone`, `appointmentdate`, `department`, `docter`, `message`) VALUES ('$paname','$paemail','$paphone','$padate',' $padepartment','$padocter','$pmessage')";
+            $insertdata=mysqli_query($conn,$insertdataQuery);   
+                      }
+
+    ?>
+
   <main id="main">
     
+
     <section class="inner-page">
       <div class="container">
          <section id="appointment" class="appointment section-bg" style="background-color: #EDEDED";>
@@ -63,25 +94,25 @@
         <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
           <div class="row">
             <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="text" name="pname" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+              <input type="email" class="form-control" name="pemail" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="tel" class="form-control" name="pphone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4 form-group mt-3">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="datetime" name="adate" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3">
-              <select name="department" id="department" class="form-select">
+              <select name="adepartment" id="department" class="form-select">
                 <option value="">Select Department</option>
                 <option value="Department 1">Department 1</option>
                 <option value="Department 2">Department 2</option>
@@ -90,7 +121,7 @@
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3">
-              <select name="doctor" id="doctor" class="form-select">
+              <select name="adoctor" id="doctor" class="form-select">
                 <option value="">Select Doctor</option>
                 <option value="Doctor 1">Doctor 1</option>
                 <option value="Doctor 2">Doctor 2</option>
@@ -100,7 +131,7 @@
             </div>
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+            <textarea class="form-control" name="amessage" rows="5" placeholder="Message (Optional)"></textarea>
             <div class="validate"></div>
           </div>
           <div class="mb-3">
@@ -175,6 +206,7 @@
       </div>
     </div>
   </footer>
+
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
