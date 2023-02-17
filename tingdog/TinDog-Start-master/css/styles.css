@@ -27,6 +27,7 @@ h2{
 
 h3{
 	font-family: "Montserrat-bold";
+	
 }
 
 p{
@@ -126,6 +127,32 @@ p{
 	padding: 100px;
 	text-align: center;
 }
+
 .pricing-column{
 	padding: 3% 2%;
+}
+
+#cta{
+	background-color: #ff4c68;
+	text-align: center;
+	padding: 7% 15%;
+	color: #fff;
+
+}
+.ctaheading{
+	font-family: montserrat-black;
+	font-size: 3.5rem;
+	line-height: 1.5rem;
+}
+
+
+footer{
+	
+	background-color: #fff;
+	text-align: center;
+	padding: 5% 5%;
+}
+
+.social-icon{
+	margin: 10px 5px;
 }
